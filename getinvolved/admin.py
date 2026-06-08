@@ -9,6 +9,7 @@ class CareerOpportunityAdmin(admin.ModelAdmin):
     search_fields = ['title', 'description', 'requirements', 'responsibilities']
     list_editable = ['featured', 'status']
     readonly_fields = ['created_at', 'updated_at']
+    prepopulated_fields = {'slug': ('title',)}
     date_hierarchy = 'posted_date'
     
     fieldsets = (
@@ -38,6 +39,7 @@ class AnnouncementAdmin(admin.ModelAdmin):
     search_fields = ['title', 'summary', 'content']
     list_editable = ['featured', 'is_active', 'priority']
     readonly_fields = ['created_at', 'updated_at']
+    prepopulated_fields = {'slug': ('title',)}
     date_hierarchy = 'published_date'
     
     fieldsets = (
