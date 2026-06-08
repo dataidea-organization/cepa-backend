@@ -44,8 +44,10 @@ class PodcastViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'])
     def categories(self, request):
         """Get all unique podcast categories"""
-        categories = self.queryset.values_list('category', flat=True).distinct()
-        return Response(list(categories))
+        categories = sorted({
+            cat.strip() for cat in self.queryset.values_list('category', flat=True) if cat
+        })
+        return Response(categories)
 
 
 class VideoViewSet(viewsets.ModelViewSet):
@@ -75,8 +77,10 @@ class VideoViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'])
     def categories(self, request):
         """Get all unique video categories"""
-        categories = self.queryset.values_list('category', flat=True).distinct()
-        return Response(list(categories))
+        categories = sorted({
+            cat.strip() for cat in self.queryset.values_list('category', flat=True) if cat
+        })
+        return Response(categories)
 
 
 class GalleryGroupViewSet(viewsets.ModelViewSet):
