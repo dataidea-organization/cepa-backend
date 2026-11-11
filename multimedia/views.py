@@ -17,10 +17,23 @@ from .serializers import (
 )
 
 
+class StandardResultsSetPagination(PageNumberPagination):
+    """Pagination for multimedia list endpoints"""
+    page_size = 6
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
 class PodcastViewSet(viewsets.ModelViewSet):
     """ViewSet for Podcast model with full CRUD operations"""
     queryset = Podcast.objects.all()
     serializer_class = PodcastSerializer
+    pagination_class = StandardResultsSetPagination
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_fields = ['category', 'featured']
+    search_fields = ['title', 'description', 'guest']
+    ordering_fields = ['created_at', 'date', 'title']
+    ordering = ['-date', '-created_at']
 
     @action(detail=False, methods=['get'])
     def featured(self, request):

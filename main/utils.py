@@ -21,5 +21,5 @@ def get_full_media_url(relative_url):
         return f"{full_media_url}/{relative_url}"
     if settings.DEBUG:
         return f"http://localhost:8000{settings.MEDIA_URL}{relative_url}"
-    backend_domain = config('BACKEND_DOMAIN', default='https://cepa-backend-production.up.railway.app')
+    backend_domain = config('BACKEND_DOMAIN', default='https://admin.cepa.or.ug')
     return f"{backend_domain}{settings.MEDIA_URL}{relative_url}"

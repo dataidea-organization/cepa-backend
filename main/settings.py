@@ -22,7 +22,7 @@ DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://cepa-backend-production.up.railway.app",
+    "https://admin.cepa.or.ug",
     "https://master.d1o07tzlhd1qin.amplifyapp.com",
     "https://cepa.or.ug",
     "https://www.cepa.or.ug",
@@ -216,8 +216,8 @@ MEDIA_URL = '/media/'
 
 # Full media URL for absolute URLs in API responses
 if RAILWAY_ENVIRONMENT_NAME:
-    # Production: Use the Railway backend URL
-    FULL_MEDIA_URL = 'https://cepa-backend-production.up.railway.app/media/'
+    # Production: Use the admin backend URL
+    FULL_MEDIA_URL = 'https://admin.cepa.or.ug/media/'
 else:
     # Development: Use local backend URL
     FULL_MEDIA_URL = 'http://localhost:8000/media/'
