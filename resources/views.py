@@ -28,7 +28,7 @@ class BlogPostViewSet(viewsets.ModelViewSet):
     filterset_fields = ['category', 'featured']
     search_fields = ['title', 'description', 'content']
     ordering_fields = ['created_at', 'date', 'title']
-    ordering = ['-created_at']
+    ordering = ['-created_at', '-id']
 
     @action(detail=False, methods=['get'])
     def featured(self, request):
@@ -90,7 +90,7 @@ class NewsArticleViewSet(viewsets.ModelViewSet):
     filterset_fields = ['category', 'featured']
     search_fields = ['title', 'description', 'content']
     ordering_fields = ['created_at', 'date', 'title']
-    ordering = ['-created_at']
+    ordering = ['-created_at', '-id']
 
     @action(detail=False, methods=['get'])
     def featured(self, request):
@@ -155,7 +155,7 @@ class PublicationViewSet(viewsets.ModelViewSet):
     filterset_fields = ['type', 'category', 'featured']
     search_fields = ['title', 'description']
     ordering_fields = ['created_at', 'date', 'title']
-    ordering = ['-created_at']
+    ordering = ['-created_at', '-id']
 
     @action(detail=False, methods=['get'])
     def featured(self, request):
@@ -182,7 +182,7 @@ class EventViewSet(viewsets.ModelViewSet):
     filterset_fields = ['category', 'status', 'featured']
     search_fields = ['title', 'description', 'location']
     ordering_fields = ['created_at', 'date', 'title']
-    ordering = ['-created_at']
+    ordering = ['-created_at', '-id']
 
     @action(detail=False, methods=['get'])
     def featured(self, request):

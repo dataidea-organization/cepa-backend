@@ -33,7 +33,7 @@ class PodcastViewSet(viewsets.ModelViewSet):
     filterset_fields = ['category', 'featured']
     search_fields = ['title', 'description', 'guest']
     ordering_fields = ['created_at', 'date', 'title']
-    ordering = ['-date', '-created_at']
+    ordering = ['-date', '-created_at', '-id']
 
     @action(detail=False, methods=['get'])
     def featured(self, request):
